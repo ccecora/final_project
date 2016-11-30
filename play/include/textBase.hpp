@@ -1,0 +1,36 @@
+#include <vector>
+#include <string>
+#inlcude "Ngram.hpp"
+#include "Cosine.hpp"
+
+class textBase {
+
+public:
+
+  
+  void build(std::string groupFile, char deg='h');
+
+  std::vector<std::string> readText(std::string file);
+
+  void parse(char deg);
+
+  void buildNgram(std::vector<std::string> text);
+
+  void buildCosine(std::vector<std::string> text);
+
+private:
+
+  //value for cosine class to deem somthing suspisous
+  float threshold;
+
+  //value to be used to construct ngram class
+  int gramCount;
+
+  //ngram information
+  Ngram ngram;
+
+  //cosine information
+  Cosine cosi;
+ 
+
+};
