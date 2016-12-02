@@ -1,0 +1,30 @@
+#include <vector>
+#include <string>
+#inlcude "Ngram.hpp"
+#include "Cosine.hpp"
+
+class textBase {
+
+public:
+
+  
+  void build(std::string groupFile, char deg='h');
+
+  std::vector<std::string> readNames(std::string groupFile);
+
+  std::vector<std::string> readText(std::string fname);
+
+  void buildNgram(std::vector<std::string> text);
+
+  void buildCosine(std::vector<std::string> text);
+
+private:
+
+  //ngram information
+  Ngram ngram;
+
+  //cosine information
+  Cosine cosi;
+ 
+
+};
