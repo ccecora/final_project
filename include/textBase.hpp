@@ -1,12 +1,11 @@
 #include <vector>
 #include <string>
+#include <map>
 #inlcude "Ngram.hpp"
 #include "Cosine.hpp"
 
 class textBase {
-
 public:
-
   
   void build(std::string groupFile, char deg='h');
 
@@ -15,9 +14,7 @@ public:
   void parse(char deg);
 
   void buildNgram(std::vector<std::string> text);
-
-  void buildCosine(std::vector<std::string> text);
-
+  
 private:
 
   //value for cosine class to deem somthing suspisous
@@ -27,10 +24,19 @@ private:
   int gramCount;
 
   //ngram information
-  Ngram ngram;
+  //Ngram ngram;
 
   //cosine information
-  Cosine cosi;
+  class Cosine {
+  public:
+    std::vector<string> text;
+    std::map<std::string,std::int> wordCount1;
+    std::map<std::string,std::int> wordCount2;
+
+    void buildInitMap(std::vector<std::string> text);
+    void buildCompMap(std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2);
+    void cosineCalc(std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2);
+  };
  
 
 };

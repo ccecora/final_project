@@ -29,6 +29,8 @@ void textBase :: parse(char deg) {
   default :
     std::cerr << "Invalid sensitivity given! Please enter h, m, or l\n";
     //should we give throw and catch error to have them renter an input
+    //^maybe a good piazza, like asking if we should throw and catch in general
+    //but will def affect out unit tests
     exit(1);
   }
 }
@@ -49,4 +51,17 @@ std::vector<std::string> textBase :: readText(std::string file) {
   return text;  
 }
 
+void std::textBase::Cosine::buildInitMap(std::vector<std::string> input){
+  std::map<std::string,std::int> wc;
 
+  for(unsigned j = 0; j<input.size(); j++){
+    temp = in[j];
+    count = wc.find(temp);
+    if(count == wc.end()){
+      wc[temp] = 1;
+    } else {
+      wc[temp]++;
+    }
+  }
+  return wc;
+}
