@@ -24,10 +24,10 @@ private:
   float threshold;
 
   //value to be used to construct ngram class
-  int gramCount;
+  unsigned gramCount;
 
   //ngram information
-  Ngram ngram;
+  std::vector<Ngram> ngram;
 
   //cosine information
   Cosine cosi;

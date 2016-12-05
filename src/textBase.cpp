@@ -8,14 +8,13 @@ void textBase :: build(std::string groupFile, char deg) {
   parse(deg);
   for (std::string &fname : flist) {
     std::vector<std::string> text = readText(fname);
-    ngram(gramCount);
     buildCosine(text);
     buildNgram(text);
     
   }
 }
 
-void textBase :: parse(char deg) {
+dvoid textBase :: parse(char deg) {
   switch (deg) {
   case 'h':
     gramCount=4;
@@ -49,4 +48,14 @@ std::vector<std::string> textBase :: readText(std::string file) {
   return text;  
 }
 
-
+void textBase :: buildNgram(std::vector<std::string> &text) {
+  Ngram gramholder(gramCount);
+  auto first = text.begin(); // first element
+  auto last = text.begin() + gramCount; // n-1th element
+  while (last-1 != text.end()) {
+    gramholder.increment(first, last); // add ngrams until we run out
+    ++first;
+    ++last;
+  }
+  ngram.push_back(gramholder);
+}
