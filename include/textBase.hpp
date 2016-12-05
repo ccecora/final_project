@@ -7,11 +7,16 @@ class textBase {
 
 public:
 
+  textBase();
   
   void build(std::string groupFile, char deg='h');
 
   std::vector<std::string> readText(std::string file);
 
+  float getThreshold() {return threshold; };
+
+  unsigned getGramCount() {return gramCount; };
+  
   void parse(char deg);
 
   void buildNgram(std::vector<std::string> text);
