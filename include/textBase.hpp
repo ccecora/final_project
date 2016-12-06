@@ -23,6 +23,8 @@ public:
 
   void buildCosine(std::vector<std::string> text);
 
+  void compCosine(std::vector<Cosine> vects);
+		  
 private:
 
   //value for cosine class to deem somthing suspisous
@@ -35,7 +37,7 @@ private:
   std::vector<Ngram> ngram;
 
   //cosine information
-  Cosine cosi;
+  std::vector<Cosine> cos;
  
 
 };
