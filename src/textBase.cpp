@@ -2,15 +2,13 @@
 #include <iostream>
 #include <fstream>
 
-
-void textBase :: build(std::string groupFile, char deg) {
+textBase :: textBase(std::string groupFile, char deg) {
   std::vector<std::string> flist = readText(groupFile);
   parse(deg);
   for (std::string &fname : flist) {
     std::vector<std::string> text = readText(fname);
     buildCosine(text);
-    buildNgram(text);
-    
+    buildNgram(text); 
   }
 }
 
@@ -58,4 +56,16 @@ void textBase :: buildNgram(std::vector<std::string> &text) {
     ++last;
   }
   ngram.push_back(gramholder);
+}
+
+void textbase :: buildCosine(std::vector<std::string> text) {
+  Cosine CurrCos;
+  std::map<std::string,std::int> temp1;
+  temp1 = CurrCos.buildInitMap(text);
+  CurrCos.setMap(temp1);
+  cos.push_back(CurrCos);
+}
+
+void compCosine(std::vector< std::textBase::Cosine > vects){
+  
 }

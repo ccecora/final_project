@@ -25,7 +25,7 @@ public:
 private:
 
   //the collection of entries in this NgramCollection
-  std::map<std::vector<std::string>, unsigned>> counts;
+  std::map<std::vector<std::string>, unsigned> > counts;
 
   //the number of items in our NgramCollection
   unsigned n;

@@ -1,5 +1,9 @@
 #include "Cosine.hpp"
 
+Cosine::Cosine(){
+  level = getThreshold();
+    }
+
 std::map<std::string,std::int> textBase::Cosine::buildInitMap(std::vector<std::string> text){
   std::map<std::string,std::int> wc;
 
@@ -15,7 +19,11 @@ std::map<std::string,std::int> textBase::Cosine::buildInitMap(std::vector<std::s
   return wc;
 }
 
-void std::textBase::Cosine::buildCompMap(std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2){
+void std::textBase::Cosine::setMap( std::map<std::string,std::int> mapNew){
+   wordMap = mapNew;
+}
+
+std::vector< std::vector< int > > std::textBase::Cosine::buildCompVects(std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2){
   std::map<std::string,std::int> temp1 = wordCount1;
   std::map<std::string,std::int> temp2 = wordCount2;
   typedef std::map<std::string,std::int>::iterator mapSpot;
@@ -32,38 +40,46 @@ void std::textBase::Cosine::buildCompMap(std::map<std::string,std::int> wordCoun
     }
   }
 
-  *wordCount1 = temp1;
-  *wordCount2 = temp2;
+  if(temp1.size != temp2){
+    std::cout<<"Vectors different size, you screwed up fam";
+  }
+  
+  std::vector< std::vector< int > > compVects;
+
+  compVects.push_back(temp1);
+  compVects.push_back(temp2);
+
+  return compVects;
   //test: make sure the new wordcounts are the same size, print out all keys and value to check later for proper
   //ordering
 }
 
-std::float std::textBase::Cosine::cosineCalc((std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2){
-    std::vector<int> w1,w2;
-    float dotSum = 0;
-    float mag1 = 0;
-    float mag2 = 0;
+//std::float std::textBase::Cosine::cosineCalc((std::map<std::string,std::int> wordCount1, std::map<std::string,std::int> wordCount2){
+//  std::vector<int> w1,w2;
+//  float dotSum = 0;
+//  float mag1 = 0;
+//  float mag2 = 0;
 
-    typedef std::map<std::string,std::int>::iterator mapSpot;
+//  typedef std::map<std::string,std::int>::iterator mapSpot;
 
-    for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
-      w1.push_back( iterator -> second );
-    }
+//  for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
+//    w1.push_back( iterator -> second );
+//  }
 
-    for(mapSpot iterator = wordCount2.begin(); iterator != wordCount2.end(); iterator++){
-      w2.push_back( iterator -> second );
-    }
+//    for(mapSpot iterator = wordCount2.begin(); iterator != wordCount2.end(); iterator++){
+//    w2.push_back( iterator -> second );
+//  }
 
-    for(unsigned i = 0; i<w1.size(); i++){
-      dotSum = dotSum + (w1[i]*w2[i]);
-      mag1 = mag1 + pow(w1[i], 2);
-      mag2 = mag2 + pow(w2[i], 2);
-    }
+//  for(unsigned i = 0; i<w1.size(); i++){
+//    dotSum = dotSum + (w1[i]*w2[i]);
+//    mag1 = mag1 + pow(w1[i], 2);
+//    mag2 = mag2 + pow(w2[i], 2);
+//  }
 
-    mag1 = pow(mag1, 0.5);
-    mag2 = pow(mag2, 0.5);
+//  mag1 = pow(mag1, 0.5);
+//  mag2 = pow(mag2, 0.5);
 
-    return dotSum/(mag1*mag2);
-  }
+//  return dotSum/(mag1*mag2);
+// }
   
     

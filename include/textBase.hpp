@@ -15,15 +15,17 @@ public:
 
   float getThreshold() {return threshold; };
 
-  unsigned getGramCount() {return gramCount; };
+  unsigned getGramCount() {return gramCount; };  
   
   void parse(char deg);
 
   void buildNgram(std::vector<std::string> text);
 
+  //Given the text of one document, will create a Cosine object of the doc and
+  //Insert it into the vector of Cosine objects within the constructor
   void buildCosine(std::vector<std::string> text);
 
-  void compCosine(std::vector<Cosine> vects);
+  void compCosine(std::vector<std::textBase::Cosine> vects);
 		  
 private:
 
