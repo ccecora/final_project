@@ -34,18 +34,16 @@ TEST_CASE("parse", "[parse]") {
 
 }
 
-TEST_CASE("increment", "[increment]") {
-  
-  
-  
-
-}
-
-
 
 TEST_CASE("readText", "[readText]") {
-
-
+  textBase tb;
+  std::string groupfile="../data/fgtest1.txt";
+  std::vector<std::string> text;
+  text=tb.readText(groupfile);
+  REQUIRE(text[0]=="~/cs120-personal/assignments/a9/final_project/data/textfiles/test1.txt");
+  REQUIRE(text[1]=="~/cs120-personal/assignments/a9/final_project/data/textfiles/test2.txt");
+  REQUIRE(text[2]=="~/cs120-personal/assignments/a9/final_project/data/textfiles/test3.txt");
+  
 }
 
 
@@ -80,5 +78,16 @@ TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
   REQUIRE(grammap.find(word3)!=grammap.end());
     
 }
+
+
+TEST_CASE("playalg", "[playalg]") {
+  textBase tb;
+  REQUIRE(tb.playalg(1.1,50));
+  REQUIRE(!(tb.playalg(0.9,50)));
+  REQUIRE(tb.playalg(.03,1));
+  REQUIRE(!(tb.playalg(0.01,1)));
+  
+}
+
 
 
