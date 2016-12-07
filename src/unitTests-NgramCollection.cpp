@@ -90,4 +90,8 @@ TEST_CASE("playalg", "[playalg]") {
 }
 
 
+//TEST_CASE("valuesum",[valuesum]) {
 
+
+
+//}
