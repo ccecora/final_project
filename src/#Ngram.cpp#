@@ -15,3 +15,4 @@ void NgramCollection :: increment(std::vector<std::string>::const_iterator begin
 }
 
 
+

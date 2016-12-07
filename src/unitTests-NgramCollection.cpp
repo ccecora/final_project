@@ -19,10 +19,16 @@ using std::list;
 
 TEST_CASE("parse", "[parse]") {
   textBase tb;
-  REQUIRE(tb.parse() == "");
-  REQUIRE(tb.parse('h') == "");
-  REQUIRE(tb.parse('m') == "");
-  REQUIRE(tb.parse('l') == "");
+  tb.parse();
+  REQUIRE(tb.getThreshold == 0);
+  tb.parse('a');
+  REQUIRE(tb.getThreshold == 0);
+  tb.parse('h');
+  REQUIRE(tb.getThreshold == .5);
+  tb.parse('m');
+  REQUIRE(tb.getThreshold == .7);
+  tb.parse('l');
+  REQUIRE(tb.getThreshold == .9);
 
 }
 
