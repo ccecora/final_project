@@ -33,8 +33,12 @@ public:
 
   void compCosine(std::vector<std::textBase::Cosine> vects);
 
+  void toString();
+  
   //for testing
   std::vector<Ngram> getNgram(int i) {return ngram[i]; }
+
+
 		  
 private:
 
@@ -50,6 +54,8 @@ private:
   //cosine information
   std::vector<Cosine> cos;
  
-  std::vector<std::pair <std::string,std::string> > suspicousfiles;
+  std::vector<std::pair <std::string,std::string> > nsuspicousfiles;
+
+  std::vector<std::pair <std::string,std::string> > cossuspicousfiles;
   
 };

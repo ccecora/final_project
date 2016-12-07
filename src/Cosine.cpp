@@ -8,24 +8,18 @@ std::map<std::string,int> Cosine :: fetchWordMap(){
   return wordMap;
 }
 
-std::map<std::string,int> Cosine :: buildInitMap(std::vector<std::string> text){
-  std::map<std::string,int> wc;
-
+void Cosine :: buildInitMap(std::vector<std::string> text){
   for(unsigned j = 0; j<text.size(); j++){
     std::string temp = text[j];
-    auto count = wc.find(temp);
-    if(count == wc.end()){
-      wc[temp] = 1;
+    auto count = wordMap.find(temp);
+    if(count == wordMap.end()){
+      wordMap[temp] = 1;
     } else {
-      wc[temp]++;
+      wordMap[temp]++;
     }
   }
-  return wc;
 }
 
-void Cosine :: setMap( std::map<std::string,std::int> mapNew){
-   wordMap = mapNew;
-}
 
 std::vector<int> Cosine :: buildCompVects(Cosine doc1, Cosine doc2){
   std::map<std::string,int> temp1 = doc1.fetchWordMap();
@@ -34,14 +28,14 @@ std::vector<int> Cosine :: buildCompVects(Cosine doc1, Cosine doc2){
   typedef std::map<std::string,int>::iterator mapSpot;
 
   //for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
-  //  if(wordCount2.find(iterator->first) == wordCount2.end()){
+  //  if(pwordCount2.find(iterator->first) == wordCount2.end()){
   //    temp2[iterator->first] = 0;
   //  }
   //}
 
   for(mapSpot iterator = temp2.begin(); iterator != temp2.end(); iterator++){
     if(temp1.find(iterator->first) == temp1.end()){
-      temp1.insert( temp1.begin(), std::pair<string,int>(temp2[iterator->first],0) );
+      temp1[iterator->first]=0;
     }
   }
 
@@ -50,7 +44,7 @@ std::vector<int> Cosine :: buildCompVects(Cosine doc1, Cosine doc2){
   for(mapSpot iterator = temp1.begin(); iterator != temp1.end(); iterator++){
     w1.push_back( iterator -> second );
   }
-  return temp1;
+  return w1;
 }
 
   

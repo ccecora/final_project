@@ -9,11 +9,9 @@ class Cosine {
 public:
   Cosine();
 
-  void setMap( std::map<std::string,int> mapNew );
-
   std::map<std::string,int> fetchWordMap();
   
-  std::map<std::string,int> buildInitMap(std::vector<std::string> text);
+  void buildInitMap(std::vector<std::string> text);
 
   std::vector<int> buildCompVects(Cosine doc1, Cosine doc2);
   

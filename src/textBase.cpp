@@ -1,14 +1,15 @@
 #include "textBase.hpp"
 #include <iostream>
 #include <fstream>
+#include <stdbool.h>
 
 textBase :: textBase(std::string groupFile, char deg) {
   std::vector<std::string> flist = readText(groupFile);
   parse(deg);
   for (std::string &fname : flist) {
     std::vector<std::string> text = readText(fname);
-    buildCosine(text, fname);
-    buildNgram(text); 
+    buildCosine(text);
+    buildNgram(text, fname); 
   }
   compCosine(cos);
   compNgram()
@@ -89,7 +90,7 @@ void textBase :: combineNgram(Ngram primary, Ngram secondary) {
   std::pair<std::string,std::string> sfiles;
   if (suspect) {
     sfiles.make_pair(primary.getFilename, secondary.getFilename);
-    suspicousfiles.push_back(sfiles);
+    nsuspicousfiles.push_back(sfiles);
   }
 }
 
@@ -102,13 +103,19 @@ bool textBase :: playalg(int value, int total) {
 }
 
 
+void textBase :: toString() {
+  typedef std::vector<::pair<std::string,std::string> >::iterator fit;
+  for (fit =nsuspicousfiles.begin(), fit != nsuspicousfiles.end(); fit++) {
+    std::cout << "Suspicous file pair:" << fit->first << " &  " << fit->second << '\n';
+  }
+  
+}
     
       
 void textBase :: buildCosine(std::vector<std::string> text){
   Cosine CurrCos;
   std::map<std::string,std::int> temp1;
-  temp1 = CurrCos.buildInitMap(text);
-  CurrCos.setMap(temp1);
+  CurrCos.buildInitMap(text);
   cos.push_back(CurrCos);
 }
 
@@ -119,9 +126,13 @@ void textBase :: compCosine(std::vector<Cosine> vects){
     for(CosIt j = i; j != vects.end(); ++j){
       if( i != j ){ //if they aren't the same doc, compare
 	std::vector<int> v1,v2;
+	//v1 and v2 each contain the wordcounts of each string with 0s included
 	v1 = buildCompVects(*i,*j);
 	v2 = buildCompVects(*j,*i);
 
+	float dotSum=0;
+	float mag1=0;
+	float mag2=0;
 	for(unsigned i = 0; i<v1.size(); i++){
 	  dotSum = dotSum + (v1[i]*v2[i]);
 	  mag1 = mag1 + pow(v1[i], 2);
