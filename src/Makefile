@@ -34,11 +34,11 @@ all: $(BIN_DIR)/a9 $(BIN_DIR)/unitTest
 test: $(BIN_DIR)/unitTest
 	$(BIN_DIR)/unitTest
 
-$(BIN_DIR)/a9: $(OBJ_DIR)/a9.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/textBase.o 
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a9.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/textBase.o -o $(BIN_DIR)/a9
+$(BIN_DIR)/a9: $(OBJ_DIR)/a9.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/Cosine.o $(OBJ_DIR)/textBase.o 
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/a9.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/Cosine.o $(OBJ_DIR)/textBase.o -o $(BIN_DIR)/a9
 
-$(BIN_DIR)/unitTest: $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/textBase.o
-	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/textBase.o -o $(BIN_DIR)/unitTest
+$(BIN_DIR)/unitTest: $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/textBase.o $(OBJ_DIR)/Cosine.o
+	$(GCC) $(CPPFLAGS) $(OBJ_DIR)/unitTestDriver.o $(OBJ_DIR)/unitTests-NgramCollection.o $(OBJ_DIR)/Ngram.o $(OBJ_DIR)/Cosine.o $(OBJ_DIR)/textBase.o -o $(BIN_DIR)/unitTest
 
 $(OBJ_DIR)/a9.o: a9.cpp 
 	$(GCC) $(CPPFLAGS) -c a9.cpp -o $(OBJ_DIR)/a9.o
@@ -52,7 +52,10 @@ $(OBJ_DIR)/unitTests-NgramCollection.o: unitTests-NgramCollection.cpp
 $(OBJ_DIR)/Ngram.o: Ngram.cpp $(INC_DIR)/Ngram.hpp 
 	 $(GCC) $(CPPFLAGS) -c Ngram.cpp -o $(OBJ_DIR)/Ngram.o
 
-$(OBJ_DIR)/textBase.o: textBase.cpp $(INC_DIR)/textBase.hpp $(INC_DIR)/Ngram.hpp
+$(OBJ_DIR)/Cosine.o: Cosine.cpp $(INC_DIR)/Cosine.hpp
+         $(GCC) $(CPPFLAGS) -c Cosine.cpp -o $(OBJ_DIR)/Cosine.o
+
+$(OBJ_DIR)/textBase.o: textBase.cpp $(INC_DIR)/textBase.hpp $(INC_DIR)/Ngram.hpp $(INC_DIR)/Cosine.hpp
 	 $(GCC) $(CPPFLAGS) -c textBase.cpp -o $(OBJ_DIR)/textBase.o
 
 
