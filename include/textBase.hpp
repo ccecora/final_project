@@ -38,7 +38,7 @@ public:
   void toStringCos();
   
   //for testing
-  std::vector<Ngram> getNgram(int i) {return ngram[i]; }
+  std::vector<Ngram> getNgram(int i) {return ngram.at(i); }
 
 
 		  
