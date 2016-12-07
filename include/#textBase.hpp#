@@ -7,7 +7,7 @@ class textBase {
 
 public:
 
-  textBase() {threshold=0.02; }
+  textBase() {threshold=0.2; }
   
   void build(std::string groupFile, char deg='h');
 

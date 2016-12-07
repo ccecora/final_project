@@ -1,11 +1,16 @@
 #include "Cosine.hpp"
 
-Cosine::Cosine(){
+Cosine::Cosine(std::string fileName){
+  fName = fileName;
   level = getThreshold();
 }
 
 std::map<std::string,int> Cosine :: fetchWordMap(){
   return wordMap;
+}
+
+std::string Cosine :: fetchfName(){
+  return fName;
 }
 
 void Cosine :: buildInitMap(std::vector<std::string> text){
@@ -47,7 +52,18 @@ std::vector<int> Cosine :: buildCompVects(Cosine doc1, Cosine doc2){
   return w1;
 }
 
-  
+bool Cosine :: checkThresh(float cosVal){
+  bool suspicious;
+  if(cosVal > 1 || cosVal < 0){
+    std::cout<<"Error: Cosval not between 0 and 1";
+    exit(1);
+  } else if( cosVal >= threshold ){
+    suspicious = 1;
+  } else {
+    suspicious = 0;
+  }
+  return suspicious;
+}
 
-  
+			 
     
