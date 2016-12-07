@@ -2,8 +2,7 @@
 #include <list>
 #include <map>
 #include <string>
-#include <cstdlib> // for srand
-#include <ctime> // for time(NULL)
+#include <cassert>
 
 class Ngram {
 
@@ -32,9 +31,9 @@ private:
   //the collection of entries in this NgramCollection
   std::map<std::vector<std::string>, unsigned> counts;
 
-  //the file the class came from
-  std::string filename;
-
   //the number of items in our NgramCollection
   unsigned n;
+
+  //the file the class came from
+  std::string filename;
 };
