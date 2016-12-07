@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 textBase :: textBase(std::string groupFile, char deg) {
+  threshold = 0.02;
   std::vector<std::string> flist = readText(groupFile);
   parse(deg);
   for (std::string &fname : flist) {
