@@ -8,7 +8,7 @@ textBase :: textBase(std::string groupFile, char deg) {
   parse(deg);
   for (std::string &fname : flist) {
     std::vector<std::string> text = readText(fname);
-    buildCosine(text);
+    buildCosine(text, fname);
     buildNgram(text, fname); 
   }
   compCosine(cos);
@@ -112,18 +112,19 @@ void textBase :: toString() {
 }
     
       
-void textBase :: buildCosine(std::vector<std::string> text){
-  Cosine CurrCos;
+void textBase :: buildCosine(std::vector<std::string> text, std::string fileName){
+  Cosine CurrCos(fileName);
   std::map<std::string,std::int> temp1;
   CurrCos.buildInitMap(text);
   cos.push_back(CurrCos);
 }
 
-void textBase :: compCosine(std::vector<Cosine> vects){
+void textBase :: compCosine(){
   typedef std::vector<Cosine>::iterator CosIt;
-
-  for(CosIt i = vects.begin(); i != vects.end(); ++i){
-    for(CosIt j = i; j != vects.end(); ++j){
+  std::vector<std::pair <std::string,std::string> > = temPair;
+  
+  for(CosIt i = cos.begin(); i != cos.end(); ++i){
+    for(CosIt j = i; j != cos.end(); ++j){
       if( i != j ){ //if they aren't the same doc, compare
 	std::vector<int> v1,v2;
 	//v1 and v2 each contain the wordcounts of each string with 0s included
@@ -142,7 +143,12 @@ void textBase :: compCosine(std::vector<Cosine> vects){
 	mag1 = pow(mag1, 0.5);
 	mag2 = pow(mag2, 0.5);
 
-	std::cout << dotSum/(mag1*mag2);
+	float cosV = dotSum/(mag1*mag2);
+
+	if(checkThresh(cosV)){
+	  temPair = std::make_pair(*i.fetchfName(), *j.fetchfName());
+	  cossuspiciousfiles.push_back(temPair);
+	}
 	//NOTE: Will make function that checks values against threshold
 	//Ran out of time
       }
