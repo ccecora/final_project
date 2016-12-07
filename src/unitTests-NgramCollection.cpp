@@ -27,6 +27,8 @@ TEST_CASE("parse", "[parse]") {
   REQUIRE(tb.getThreshold == .5);
   tb.parse('m');
   REQUIRE(tb.getThreshold == .7);
+  tb.parse('b');
+  REQUIRE(tb.getThreshold == .7);
   tb.parse('l');
   REQUIRE(tb.getThreshold == .9);
 

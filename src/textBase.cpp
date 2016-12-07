@@ -11,6 +11,7 @@ textBase :: textBase(std::string groupFile, char deg) {
     buildNgram(text); 
   }
   compCosine(cos);
+  compNgram()
 }
 
 void textBase :: parse(char deg) {
@@ -57,6 +58,16 @@ void textBase :: buildNgram(std::vector<std::string> &text) {
     ++last;
   }
   ngram.push_back(gramholder);
+}
+
+void textBase :: compNgram() {
+  for (std::vector<Ngram>::iterator niti = ngram.begin();niti != ngram.end(); niti++) {
+    for (std::vector<Ngram>::iterator nitj = niti(); nitj != ngram.end(); nitj++) {
+      if( niti != nitj ){
+	
+
+
+
 }
 
 void textBase :: buildCosine(std::vector<std::string> text){

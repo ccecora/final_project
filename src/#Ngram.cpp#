@@ -1,4 +1,4 @@
-yyyy#include "Ngram.hpp"
+#include "Ngram.hpp"
 #include <algorithm>
 #include <cassert>
 
@@ -13,6 +13,5 @@ void NgramCollection :: increment(std::vector<std::string>::const_iterator begin
   }
   counts[words] += 1; // increment the corresponding count
 }
-
 
 
