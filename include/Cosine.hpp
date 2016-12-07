@@ -9,7 +9,7 @@
 class Cosine {
 
 public:
-  Cosine(std::string fileName);
+  Cosine(std::string fileName, float threshold);
 
   std::map<std::string,int> fetchWordMap();
   

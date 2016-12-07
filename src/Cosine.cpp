@@ -1,8 +1,8 @@
 #include "Cosine.hpp"
 
-Cosine::Cosine(std::string fileName){
+Cosine::Cosine(std::string fileName, float threshold){
   fName = fileName;
-  level = getThreshold();
+  level = threshold;
 }
 
 std::map<std::string,int> Cosine :: fetchWordMap(){
@@ -57,7 +57,7 @@ bool Cosine :: checkThresh(float cosVal){
   if(cosVal > 1 || cosVal < 0){
     std::cout<<"Error: Cosval not between 0 and 1";
     exit(1);
-  } else if( cosVal >= threshold ){
+  } else if( cosVal >= level ){
     suspicious = 1;
   } else {
     suspicious = 0;

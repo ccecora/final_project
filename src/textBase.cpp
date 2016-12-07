@@ -118,7 +118,7 @@ void textBase :: toStringCos() {
 }
       
 void textBase :: buildCosine(std::vector<std::string> text, std::string fileName){
-  Cosine CurrCos(fileName);
+  Cosine CurrCos(fileName, threshold);
   std::map<std::string,std::int> temp1;
   CurrCos.buildInitMap(text);
   cos.push_back(CurrCos);
