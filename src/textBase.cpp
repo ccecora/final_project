@@ -64,12 +64,38 @@ void textBase :: compNgram() {
   for (std::vector<Ngram>::iterator niti = ngram.begin();niti != ngram.end(); niti++) {
     for (std::vector<Ngram>::iterator nitj = niti(); nitj != ngram.end(); nitj++) {
       if( niti != nitj ){
-	
+	combineNgram(*niti, *nitj);
+      }
+    }
+  }	  
+}
+
+void textBase :: combineNgram(Ngram primary, Ngram secondary) {
+  unsigned freq;
+  unsigned sum=0;
+
+  gram1=primary.getCounts();
+  gram2=seconday.getCounts();
+  
+  typedef std::map<std::vector<std::string>, unsigned> >::iterator itgram;
+  itgram it2;
+  for(itgram it = gram1.begin(); it != gram1.end(); it++) {
+    if((it2=gram2.find(it->first)) != gram2.end()) {
+      freq=min(it->second,it2->second);
+      sum = sum+freq;
+  }
+  playalg(sum)
+}
 
 
+boolean textBase :: playalg(unsigned value) {
+  
 
 }
 
+
+    
+      
 void textBase :: buildCosine(std::vector<std::string> text){
   Cosine CurrCos;
   std::map<std::string,std::int> temp1;

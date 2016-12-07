@@ -1,4 +1,4 @@
-yyyy#include "Ngram.hpp"
+#include "Ngram.hpp"
 #include <algorithm>
 #include <cassert>
 
