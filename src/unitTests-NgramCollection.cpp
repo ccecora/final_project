@@ -46,7 +46,7 @@ TEST_CASE("readText", "[readText]") {
   
 }
 
-
+/*
 TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
   textBase tb;
   tb.parse('h');
@@ -78,7 +78,7 @@ TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
   REQUIRE(grammap.find(word3)!=grammap.end());
     
 }
-
+*/
 
 TEST_CASE("playalg", "[playalg]") {
   textBase tb;

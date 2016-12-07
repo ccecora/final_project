@@ -4,7 +4,7 @@
 
 /* take iterators to the start/end of an Ngram, increment the appropriate                                                                                                          
  * element of the map */
-void NgramCollection :: increment(std::vector<std::string>::const_iterator begin,
+void Ngram :: increment(std::vector<std::string>::const_iterator begin,
 				  std::vector<std::string>::const_iterator end) {
   assert(end - begin == n); // make sure we've got the right number of words
   std::vector<std::string> words; // make a vector containing the words
@@ -14,7 +14,7 @@ void NgramCollection :: increment(std::vector<std::string>::const_iterator begin
   counts[words] += 1; // increment the corresponding count
 }
 
-int NgramCollection :: valuesum() {
+int Ngram :: valuesum() {
   int sum=0;
   typedef std::map<std::vector<std::string>, unsigned>::iterator itcount;
   for(itcount it = counts.begin(); it != counts.end(); it++) {
