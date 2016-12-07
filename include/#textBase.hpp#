@@ -47,5 +47,6 @@ private:
   //cosine information
   std::vector<Cosine> cos;
  
-
+  std::vector<std::pair <std::string,std::string> > suspicousfiles;
+  
 };

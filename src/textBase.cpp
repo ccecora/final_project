@@ -7,7 +7,7 @@ textBase :: textBase(std::string groupFile, char deg) {
   parse(deg);
   for (std::string &fname : flist) {
     std::vector<std::string> text = readText(fname);
-    buildCosine(text);
+    buildCosine(text, fname);
     buildNgram(text); 
   }
   compCosine(cos);
@@ -18,13 +18,13 @@ void textBase :: parse(char deg) {
   switch (deg) {
   case 'h':
     gramCount=3;
-    threshold=.5;
+    threshold=.03;
   case 'm':
     gramCount=4;
-    threshold=.7;
+    threshold=.02;
   case 'l':
     gramCount=5;
-    threshold=.9;
+    threshold=.005;
   default :
     std::cerr << "Invalid sensitivity given! Please enter h, m, or l\n";
     //should we give throw and catch error to have them renter an input
@@ -48,7 +48,7 @@ std::vector<std::string> textBase :: readText(std::string file) {
   return text;  
 }
 
-void textBase :: buildNgram(std::vector<std::string> &text) {
+void textBase :: buildNgram(std::vector<std::string> &text, std::string &fname) {
   Ngram gramholder(gramCount);
   auto first = text.begin(); // first element
   auto last = text.begin() + gramCount; // n-1th element
@@ -71,9 +71,9 @@ void textBase :: compNgram() {
 }
 
 void textBase :: combineNgram(Ngram primary, Ngram secondary) {
-  unsigned freq;
-  unsigned sum=0;
-
+  int freq;
+  int sum=0;
+  int sharedcount=min(primary.valuesum(), secondary.valuesum());
   gram1=primary.getCounts();
   gram2=seconday.getCounts();
   
@@ -81,16 +81,24 @@ void textBase :: combineNgram(Ngram primary, Ngram secondary) {
   itgram it2;
   for(itgram it = gram1.begin(); it != gram1.end(); it++) {
     if((it2=gram2.find(it->first)) != gram2.end()) {
-      freq=min(it->second,it2->second);
+      freq=(int) min(it->second,it2->second);
       sum = sum+freq;
+    }
   }
-  playalg(sum)
+  bool suspect=playalg(sum, sharedcount);
+  std::pair<std::string,std::string> sfiles;
+  if (suspect) {
+    sfiles.make_pair(primary.getFilename, secondary.getFilename);
+    suspicousfiles.push_back(sfiles);
+  }
 }
 
 
-boolean textBase :: playalg(unsigned value) {
+bool textBase :: playalg(int value, int total) {
+  float ngramthresh= threshold * (float) total;
+  bool suspicous= ((float)value)>ngramthresh;
   
-
+  return suspicous
 }
 
 
