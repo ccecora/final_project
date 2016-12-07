@@ -1,0 +1,1 @@
+This should help count the sum of the map's value which should be 15 with ngram 3.
