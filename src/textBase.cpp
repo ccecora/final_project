@@ -107,10 +107,15 @@ void textBase :: toString() {
   typedef std::vector<::pair<std::string,std::string> >::iterator fit;
   for (fit =nsuspicousfiles.begin(), fit != nsuspicousfiles.end(); fit++) {
     std::cout << "Suspicous file pair:" << fit->first << " &  " << fit->second << '\n';
-  }
-  
+  }  
 }
-    
+
+void textBase :: toStringCos() {
+  typedef std::vector<::pair<std::string,std::string> >::iterator fit;
+  for (fit =cossuspicousfiles.begin(), fit != cossuspicousfiles.end(); fit++) {
+    std::cout << "Suspicous file pair:" << fit->first << " &  " << fit->second << '\n';
+  }
+}
       
 void textBase :: buildCosine(std::vector<std::string> text, std::string fileName){
   Cosine CurrCos(fileName);
@@ -154,5 +159,7 @@ void textBase :: compCosine(){
       }
     }
   }
+
+  toStringCos();
   
 }

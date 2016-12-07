@@ -34,6 +34,8 @@ public:
   void compCosine();
 
   void toString();
+
+  void toStringCos();
   
   //for testing
   std::vector<Ngram> getNgram(int i) {return ngram[i]; }
