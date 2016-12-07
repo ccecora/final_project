@@ -21,7 +21,7 @@ public:
   void increment(std::vector<std::string>::const_iterator begin,
 		 std::vector<std::string>::const_iterator end);
 
-  std::map<std::vector<std::string>,unsigned> > getCounts() {return counts; }
+  std::map<std::vector<std::string>,unsigned> getCounts() {return counts; }
 
   int valuesum();
 
@@ -30,7 +30,7 @@ public:
 private:
 
   //the collection of entries in this NgramCollection
-  std::map<std::vector<std::string>, unsigned> > counts;
+  std::map<std::vector<std::string>, unsigned> counts;
 
   //the file the class came from
   std::string filename;

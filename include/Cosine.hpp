@@ -19,7 +19,7 @@ public:
 
   std::vector<int> buildCompVects(Cosine doc1, Cosine doc2);
 
-  std::bool checkThresh(float cosVal);
+  bool checkThresh(float cosVal);
   
 private:
   std::string fName;
@@ -31,6 +31,6 @@ private:
   std::vector<int> compVect;
 
   //threshold value determined from user input in textbase
-  std::float level;
+  float level;
   
 };

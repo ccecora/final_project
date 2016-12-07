@@ -106,14 +106,14 @@ bool textBase :: playalg(int value, int total) {
 void textBase :: toString() {
   typedef std::vector<::pair<std::string,std::string> >::iterator fit;
   for (fit =nsuspicousfiles.begin(), fit != nsuspicousfiles.end(); fit++) {
-    std::cout << "Suspicous file pair:" << fit->first << " &  " << fit->second << '\n';
+    std::cout << "Suspicous file pair(ngram):" << fit->first << " &  " << fit->second << '\n';
   }  
 }
 
 void textBase :: toStringCos() {
   typedef std::vector<::pair<std::string,std::string> >::iterator fit;
   for (fit =cossuspicousfiles.begin(), fit != cossuspicousfiles.end(); fit++) {
-    std::cout << "Suspicous file pair:" << fit->first << " &  " << fit->second << '\n';
+    std::cout << "Suspicous file pair(cosine):" << fit->first << " &  " << fit->second << '\n';
   }
 }
       

@@ -50,13 +50,13 @@ $(OBJ_DIR)/unitTests-NgramCollection.o: unitTests-NgramCollection.cpp
 	$(GCC) $(CPPFLAGS) -c unitTests-NgramCollection.cpp -o $(OBJ_DIR)/unitTests-NgramCollection.o
 
 $(OBJ_DIR)/Ngram.o: Ngram.cpp $(INC_DIR)/Ngram.hpp 
-	 $(GCC) $(CPPFLAGS) -c Ngram.cpp -o $(OBJ_DIR)/Ngram.o
+	$(GCC) $(CPPFLAGS) -c Ngram.cpp -o $(OBJ_DIR)/Ngram.o
 
 $(OBJ_DIR)/Cosine.o: Cosine.cpp $(INC_DIR)/Cosine.hpp
-         $(GCC) $(CPPFLAGS) -c Cosine.cpp -o $(OBJ_DIR)/Cosine.o
+	$(GCC) $(CPPFLAGS) -c Cosine.cpp -o $(OBJ_DIR)/Cosine.o
 
 $(OBJ_DIR)/textBase.o: textBase.cpp $(INC_DIR)/textBase.hpp $(INC_DIR)/Ngram.hpp $(INC_DIR)/Cosine.hpp
-	 $(GCC) $(CPPFLAGS) -c textBase.cpp -o $(OBJ_DIR)/textBase.o
+	$(GCC) $(CPPFLAGS) -c textBase.cpp -o $(OBJ_DIR)/textBase.o
 
 
 ###############################

@@ -16,7 +16,7 @@ void NgramCollection :: increment(std::vector<std::string>::const_iterator begin
 
 int NgramCollection :: valuesum() {
   int sum=0;
-  typedef std::map<std::vector<std::string>, unsigned> >::iterator itcount;
+  typedef std::map<std::vector<std::string>, unsigned>::iterator itcount;
   for(itcount it = counts.begin(); it != counts.end(); it++) {
     sum = sum+((int) (it->second));
   }

@@ -1,13 +1,13 @@
 #include <vector>
 #include <string>
-#inlcude "Ngram.hpp"
+#include "Ngram.hpp"
 #include "Cosine.hpp"
 
 class textBase {
 
 public:
 
-  textBase() {threshold=0.02; }
+  textBase(std::string groupFile, char deg) {threshold=0.02; }
   
   void build(std::string groupFile, char deg='h');
 
