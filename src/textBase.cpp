@@ -10,6 +10,7 @@ textBase :: textBase(std::string groupFile, char deg) {
     buildCosine(text);
     buildNgram(text); 
   }
+  compCosine(cos);
 }
 
 void textBase :: parse(char deg) {
@@ -58,7 +59,7 @@ void textBase :: buildNgram(std::vector<std::string> &text) {
   ngram.push_back(gramholder);
 }
 
-void textbase :: buildCosine(std::vector<std::string> text) {
+void textbase :: buildCosine(std::vector<std::string> text){
   Cosine CurrCos;
   std::map<std::string,std::int> temp1;
   temp1 = CurrCos.buildInitMap(text);
@@ -67,5 +68,29 @@ void textbase :: buildCosine(std::vector<std::string> text) {
 }
 
 void compCosine(std::vector< std::textBase::Cosine > vects){
+  typedef std::vector< std::textBase::Cosine >::iterator CosIt;
+
+  for(CosIt i = vects.begin(); i != vects.end(); ++i){
+    for(CosIt j = vects.begin(); j != vects.end(); ++j){
+      if( i != j ){ //if they aren't the same doc, compare
+	std::vector<int> v1,v2;
+	v1 = buildCompVects(*i,*j);
+	v2 = buildCompVects(*j,*i);
+
+	for(unsigned i = 0; i<v1.size(); i++){
+	  dotSum = dotSum + (v1[i]*v2[i]);
+	  mag1 = mag1 + pow(v1[i], 2);
+	  mag2 = mag2 + pow(v2[i], 2);
+	}
+
+	mag1 = pow(mag1, 0.5);
+	mag2 = pow(mag2, 0.5);
+
+	std::cout << dotSum/(mag1*mag2);
+	//NOTE: Will make function that checks values against threshold
+	//Ran out of time
+      }
+    }
+  }
   
 }
