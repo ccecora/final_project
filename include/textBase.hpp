@@ -36,7 +36,7 @@ public:
 
   void toString();
 
-  void toStringCos();
+  void toStringCos(std::vector<float> cosValues);
   
   //for testing
   //  std::vector<Ngram> getNgram(int i) {return ngram.at(i); }

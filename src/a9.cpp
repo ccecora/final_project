@@ -16,6 +16,8 @@ int main(int argc, char** argv) {
   std::string groupFile = argv[1];
   char deg = std::string(argv[2])[0];
 
+  //std::cout<<"about to build textbase";
+
   textBase master(groupFile, deg);
 
   return 0;

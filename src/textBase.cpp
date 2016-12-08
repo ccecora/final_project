@@ -7,10 +7,14 @@
 textBase :: textBase(std::string groupFile, char deg) {
   threshold = 0.02;
   std::vector<std::string> flist = readText(groupFile);
+  //std::cout<<"just read file names";
   parse(deg);
   for (std::string &fname : flist) {
+    //std::cout<<"about to read individual files";
     std::vector<std::string> text = readText(fname);
+    //std::cout<<"file read, about to buildCos";
     buildCosine(text, fname);
+    //std::cout<<"cos built, about to build ngram";
     buildNgram(text, fname); 
   }
   compCosine();
@@ -29,7 +33,7 @@ void textBase :: parse(char deg) {
     break;
   case 'l':
     gramCount=5;
-    threshold=.005;
+    threshold=.0000000001;
     break;
   default :
     std::cerr << "Invalid sensitivity given! Please enter h, m, or l\n";
@@ -115,10 +119,11 @@ void textBase :: toString() {
   }  
 }
 
-void textBase :: toStringCos() {
+void textBase :: toStringCos(std::vector<float> cosValues) {
   typedef std::vector<std::pair<std::string,std::string> >::iterator fit;
-  for (fit it=cossuspicousfiles.begin(); it != cossuspicousfiles.end(); it++) {
-    std::cout << "Suspicous file pair(cosine):" << it->first << " &  " << it->second << '\n';
+  typedef std::vector<float>::iterator iit;
+  for (std::pair<fit, iit>  i(cossuspicousfiles.begin(), cosValues.begin()); i.first != cossuspicousfiles.end(); i.first++, i.second++) {
+    std::cout << "Suspicous file pair(cosine):" << i.first->first << " &  " << i.first->second << " with cosine value: " << *i.second << '\n';
   }
 }
       
@@ -156,6 +161,7 @@ std::vector<int> textBase::  buildCompVects(Cosine doc1, Cosine doc2){
 
 void textBase :: compCosine(){
   typedef std::vector<Cosine>::iterator CosIt;
+  std::vector<float> cosVals;
   
   for(CosIt i = cos.begin(); i != cos.end(); ++i){
     for(CosIt j = i; j != cos.end(); ++j){
@@ -178,16 +184,18 @@ void textBase :: compCosine(){
 	mag2 = pow(mag2, 0.5);
 
 	float cosV = dotSum/(mag1*mag2);
-
+	
+	
 	Cosine k = *i;
 	Cosine l = *j;
 	if(k.checkThresh(cosV)){
 	  cossuspicousfiles.push_back(std::make_pair(k.fetchfName(), l.fetchfName()));
+	  cosVals.push_back(cosV);
 	}
       }
     }
   }
 
-  toStringCos();
+  toStringCos(cosVals);
   
 }
