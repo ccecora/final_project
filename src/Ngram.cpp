@@ -15,10 +15,10 @@ void Ngram :: increment(std::vector<std::string>::const_iterator begin,
 }
 
 int Ngram :: valuesum() {
-  int sum=0;
-  typedef std::map<std::vector<std::string>, unsigned>::iterator itcount;
+  unsigned sum=0;
+  typedef std::map<std::vector<std::string>, int>::iterator itcount;
   for(itcount it = counts.begin(); it != counts.end(); it++) {
-    sum = sum+((int) (it->second));
+    sum = sum+((unsigned) (it->second));
   }
 
   return sum;

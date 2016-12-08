@@ -83,17 +83,17 @@ void textBase :: compNgram() {
 }
 
 void textBase :: combineNgram(Ngram primary, Ngram secondary) {
-  int freq;
-  int sum=0;
+  unsigned freq;
+  unsigned sum=0;
   int sharedcount=std::min(primary.valuesum(), secondary.valuesum());
   auto gram1=primary.getCounts();
   auto gram2=secondary.getCounts();
   
-  typedef std::map<std::vector<std::string>, unsigned>::iterator itgram;
+  typedef std::map<std::vector<std::string>, int>::iterator itgram;
   itgram it2;
   for(itgram it = gram1.begin(); it != gram1.end(); it++) {
     if((it2=gram2.find(it->first)) != gram2.end()) {
-      freq=(int) std::min(it->second,it2->second);
+      freq=(unsigned) std::min(it->second,it2->second);
       sum = sum+freq;
     }
   }
