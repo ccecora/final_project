@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 #include <cassert>
+#include <algorithm>
+#include <utility>
 
 class Ngram {
 

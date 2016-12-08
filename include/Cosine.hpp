@@ -17,7 +17,9 @@ public:
   
   void buildInitMap(std::vector<std::string> text);
 
-  std::vector<int> buildCompVects(Cosine doc1, Cosine doc2);
+  void compCosine();
+
+  //std::vector<int> buildCompVects(Cosine doc1, Cosine doc2);
 
   bool checkThresh(float cosVal);
   

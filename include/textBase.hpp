@@ -1,5 +1,6 @@
-]0;136;0c#include <vector>
+#include <vector>
 #include <string>
+#include <utility>
 #include "Ngram.hpp"
 #include "Cosine.hpp"
 
@@ -8,8 +9,6 @@ class textBase {
 public:
 
   textBase(std::string groupFile, char deg);
-  
-  void build(std::string groupFile, char deg='h');
 
   std::vector<std::string> readText(std::string file);
 
@@ -19,7 +18,7 @@ public:
   
   void parse(char deg);
 
-  void buildNgram(std::vector<std::string> text);
+  void buildNgram(std::vector<std::string> text, std::string fname);
 
   void compNgram();
 
@@ -31,6 +30,8 @@ public:
   //Insert it into the vector of Cosine objects within the constructor
   void buildCosine(std::vector<std::string> text, std::string fileName);
 
+  std::vector<int> buildCompVects(Cosine doc1, Cosine doc2);
+  
   void compCosine();
 
   void toString();

@@ -1,6 +1,7 @@
 #include "textBase.hpp"
 #include <iostream>
 #include <fstream>
+#include <utility>
 #include <stdbool.h>
 
 textBase :: textBase(std::string groupFile, char deg) {
@@ -12,8 +13,8 @@ textBase :: textBase(std::string groupFile, char deg) {
     buildCosine(text, fname);
     buildNgram(text, fname); 
   }
-  compCosine(cos);
-  compNgram()
+  compCosine();
+  compNgram();
 }
 
 void textBase :: parse(char deg) {
@@ -38,7 +39,7 @@ std::vector<std::string> textBase :: readText(std::string file) {
   std::vector<std::string> text;
   std::ifstream fin(file);
   if (!fin.is_open()) { // see if it worked
-    std::cerr << "Was unable to open the groupFile: " << groupFile << "\n";
+    std::cerr << "Was unable to open the file: " << file << "\n";
     exit(1);
   }
   std::string word;
@@ -50,8 +51,8 @@ std::vector<std::string> textBase :: readText(std::string file) {
   return text;  
 }
 
-void textBase :: buildNgram(std::vector<std::string> &text, std::string &fname) {
-  Ngram gramholder(gramCount);
+void textBase :: buildNgram(std::vector<std::string> text, std::string fname) {
+  Ngram gramholder(gramCount,fname);
   auto first = text.begin(); // first element
   auto last = text.begin() + gramCount; // n-1th element
   while (last-1 != text.end()) {
@@ -64,7 +65,7 @@ void textBase :: buildNgram(std::vector<std::string> &text, std::string &fname) 
 
 void textBase :: compNgram() {
   for (std::vector<Ngram>::iterator niti = ngram.begin();niti != ngram.end(); niti++) {
-    for (std::vector<Ngram>::iterator nitj = niti(); nitj != ngram.end(); nitj++) {
+    for (std::vector<Ngram>::iterator nitj = niti ; nitj != ngram.end(); nitj++) {
       if( niti != nitj ){
 	combineNgram(*niti, *nitj);
       }
@@ -75,22 +76,22 @@ void textBase :: compNgram() {
 void textBase :: combineNgram(Ngram primary, Ngram secondary) {
   int freq;
   int sum=0;
-  int sharedcount=min(primary.valuesum(), secondary.valuesum());
-  gram1=primary.getCounts();
-  gram2=seconday.getCounts();
+  int sharedcount=std::min(primary.valuesum(), secondary.valuesum());
+  auto gram1=primary.getCounts();
+  auto gram2=secondary.getCounts();
   
-  typedef std::map<std::vector<std::string>, unsigned> >::iterator itgram;
+  typedef std::map<std::vector<std::string>, unsigned>::iterator itgram;
   itgram it2;
   for(itgram it = gram1.begin(); it != gram1.end(); it++) {
     if((it2=gram2.find(it->first)) != gram2.end()) {
-      freq=(int) min(it->second,it2->second);
+      freq=(int) std::min(it->second,it2->second);
       sum = sum+freq;
     }
   }
   bool suspect=playalg(sum, sharedcount);
   std::pair<std::string,std::string> sfiles;
   if (suspect) {
-    sfiles.make_pair(primary.getFilename, secondary.getFilename);
+    sfiles=std::make_pair(primary.getFilename(), secondary.getFilename());
     nsuspicousfiles.push_back(sfiles);
   }
 }
@@ -100,34 +101,58 @@ bool textBase :: playalg(int value, int total) {
   float ngramthresh= threshold * (float) total;
   bool suspicous= ((float)value)>ngramthresh;
   
-  return suspicous
+  return suspicous;
 }
 
 
 void textBase :: toString() {
-  typedef std::vector<::pair<std::string,std::string> >::iterator fit;
-  for (fit =nsuspicousfiles.begin(), fit != nsuspicousfiles.end(); fit++) {
-    std::cout << "Suspicous file pair(ngram):" << fit->first << " &  " << fit->second << '\n';
+  typedef std::vector<std::pair<std::string,std::string> >::iterator fit;
+  for (fit it =nsuspicousfiles.begin(); it != nsuspicousfiles.end(); it++) {
+    std::cout << "Suspicous file pair(ngram):" << it->first << " &  " << it->second << '\n';
   }  
 }
 
 void textBase :: toStringCos() {
-  typedef std::vector<::pair<std::string,std::string> >::iterator fit;
-  for (fit =cossuspicousfiles.begin(), fit != cossuspicousfiles.end(); fit++) {
-    std::cout << "Suspicous file pair(cosine):" << fit->first << " &  " << fit->second << '\n';
+  typedef std::vector<std::pair<std::string,std::string> >::iterator fit;
+  for (fit it=cossuspicousfiles.begin(); it != cossuspicousfiles.end(); it++) {
+    std::cout << "Suspicous file pair(cosine):" << it->first << " &  " << it->second << '\n';
   }
 }
       
 void textBase :: buildCosine(std::vector<std::string> text, std::string fileName){
   Cosine CurrCos(fileName, threshold);
-  std::map<std::string,std::int> temp1;
   CurrCos.buildInitMap(text);
   cos.push_back(CurrCos);
 }
 
+std::vector<int> textBase::  buildCompVects(Cosine doc1, Cosine doc2){
+  std::map<std::string,int> temp1 = doc1.fetchWordMap();
+  std::map<std::string,int> temp2 = doc2.fetchWordMap();
+
+  typedef std::map<std::string,int>::iterator mapSpot;
+
+  //for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
+  //  if(pwordCount2.find(iterator->first) == wordCount2.end()){
+  //    temp2[iterator->first] = 0;
+  //  }
+  //}
+
+  for(mapSpot iterator = temp2.begin(); iterator != temp2.end(); iterator++){
+    if(temp1.find(iterator->first) == temp1.end()){
+      temp1[iterator->first]=0;
+    }
+  }
+
+  std::vector<int> w1;
+
+  for(mapSpot iterator = temp1.begin(); iterator != temp1.end(); iterator++){
+    w1.push_back( iterator -> second );
+  }
+  return w1;
+}
+
 void textBase :: compCosine(){
   typedef std::vector<Cosine>::iterator CosIt;
-  std::vector<std::pair <std::string,std::string> > = temPair;
   
   for(CosIt i = cos.begin(); i != cos.end(); ++i){
     for(CosIt j = i; j != cos.end(); ++j){
@@ -151,12 +176,11 @@ void textBase :: compCosine(){
 
 	float cosV = dotSum/(mag1*mag2);
 
-	if(checkThresh(cosV)){
-	  temPair = std::make_pair(*i.fetchfName(), *j.fetchfName());
-	  cossuspiciousfiles.push_back(temPair);
+	Cosine k = *i;
+	Cosine l = *j;
+	if(k.checkThresh(cosV)){
+	  cossuspicousfiles.push_back(std::make_pair(k.fetchfName(), l.fetchfName()));
 	}
-	//NOTE: Will make function that checks values against threshold
-	//Ran out of time
       }
     }
   }

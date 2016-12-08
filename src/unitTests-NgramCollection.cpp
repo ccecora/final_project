@@ -4,7 +4,6 @@
  */
 
 #include "catch.hpp" // simple unit-testing framework
-#include "Ngram.hpp" // header declaring the functions we want to test
 #include "textBase.hpp"
 
 #include <iostream>
@@ -18,25 +17,23 @@ using std::list;
 
 
 TEST_CASE("parse", "[parse]") {
-  textBase tb;
-  tb.parse();
-  REQUIRE(tb.getThreshold == 0);
+  textBase tb("file",'h');
   tb.parse('a');
-  REQUIRE(tb.getThreshold == 0);
+  REQUIRE(tb.getThreshold() == 0);
   tb.parse('h');
-  REQUIRE(tb.getThreshold == .03);
+  REQUIRE(tb.getThreshold() == .03);
   tb.parse('m');
-  REQUIRE(tb.getThreshold == .02);
+  REQUIRE(tb.getThreshold() == .02);
   tb.parse('b');
-  REQUIRE(tb.getThreshold == .02);
+  REQUIRE(tb.getThreshold() == .02);
   tb.parse('l');
-  REQUIRE(tb.getThreshold == .005);
+  REQUIRE(tb.getThreshold() == .005);
 
 }
 
 
 TEST_CASE("readText", "[readText]") {
-  textBase tb;
+  textBase tb("file",'h');
   std::string groupfile="../data/fgtest1.txt";
   std::vector<std::string> text;
   text=tb.readText(groupfile);
@@ -48,7 +45,7 @@ TEST_CASE("readText", "[readText]") {
 
 /*
 TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
-  textBase tb;
+  textBase tb("file.txt",'h');
   tb.parse('h');
   std::vector<std::string> text;
   std::string fname= "file.txt"
@@ -81,7 +78,7 @@ TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
 */
 
 TEST_CASE("playalg", "[playalg]") {
-  textBase tb;
+  textBase tb("file",'h');
   REQUIRE(tb.playalg(1.1,50));
   REQUIRE(!(tb.playalg(0.9,50)));
   REQUIRE(tb.playalg(.03,1));
