@@ -44,7 +44,8 @@ public:
 
 		  
 private:
-
+  char degree;
+  
   //value for cosine class to deem somthing suspisous
   float threshold;
 

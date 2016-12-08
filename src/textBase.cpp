@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 textBase :: textBase(std::string groupFile, char deg) {
+  degree = deg;
   threshold = 0.02;
   std::vector<std::string> flist = readText(groupFile);
   //std::cout<<"just read file names";
@@ -30,11 +31,11 @@ void textBase :: parse(char deg) {
     break;
   case 'm':
     gramCount=4;
-    threshold=.02;
+    threshold=.015;
     break;
   case 'l':
     gramCount=5;
-    threshold=.0000000001;
+    threshold=.005;
     break;
   default :
     std::cerr << "Invalid sensitivity given! Please enter h, m, or l\n";
@@ -128,7 +129,7 @@ void textBase :: toStringCos(std::vector<float> cosValues) {
 }
       
 void textBase :: buildCosine(std::vector<std::string> text, std::string fileName){
-  Cosine CurrCos(fileName, threshold);
+  Cosine CurrCos(fileName, threshold, degree);
   CurrCos.buildInitMap(text);
   cos.push_back(CurrCos);
 }
@@ -138,12 +139,6 @@ std::vector<int> textBase::  buildCompVects(Cosine doc1, Cosine doc2){
   std::map<std::string,int> temp2 = doc2.fetchWordMap();
 
   typedef std::map<std::string,int>::iterator mapSpot;
-
-  //for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
-  //  if(pwordCount2.find(iterator->first) == wordCount2.end()){
-  //    temp2[iterator->first] = 0;
-  //  }
-  //}
 
   for(mapSpot iterator = temp2.begin(); iterator != temp2.end(); iterator++){
     if(temp1.find(iterator->first) == temp1.end()){

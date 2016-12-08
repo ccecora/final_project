@@ -1,8 +1,20 @@
 #include "Cosine.hpp"
 
-Cosine::Cosine(std::string fileName, float threshold){
+Cosine::Cosine(std::string fileName, float threshold, char deg){
   fName = fileName;
-  level = threshold;
+  switch(deg){
+  case('h'):
+    level = threshold*27.6666667;
+  break;
+
+  case('m'):
+    level = threshold*52.6666667;
+  break;
+
+  case('l'):
+    level = threshold*150;
+  break;
+  }
 }
 
 std::map<std::string,int> Cosine :: fetchWordMap(){
@@ -24,33 +36,6 @@ void Cosine :: buildInitMap(std::vector<std::string> text){
     }
   }
 }
-
-
-//std::vector<int> Cosine :: buildCompVects(Cosine doc1, Cosine doc2){
-// std::map<std::string,int> temp1 = doc1.fetchWordMap();
-// std::map<std::string,int> temp2 = doc2.fetchWordMap();
-  
-//typedef std::map<std::string,int>::iterator mapSpot;
-
-  //for(mapSpot iterator = wordCount1.begin(); iterator != wordCount1.end(); iterator++){
-  //  if(pwordCount2.find(iterator->first) == wordCount2.end()){
-  //    temp2[iterator->first] = 0;
-  //  }
-  //}
-
-  //for(mapSpot iterator = temp2.begin(); iterator != temp2.end(); iterator++){
-//if(temp1.find(iterator->first) == temp1.end()){
-//    temp1[iterator->first]=0;
-//  }
-// }
-
-//std::vector<int> w1;
-  
-//for(mapSpot iterator = temp1.begin(); iterator != temp1.end(); iterator++){
-//  w1.push_back( iterator -> second );
-//}
-//return w1;
-//}
 
 bool Cosine :: checkThresh(float cosVal){
   bool suspicious;
