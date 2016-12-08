@@ -17,7 +17,7 @@ using std::list;
 
 
 TEST_CASE("parse", "[parse]") {
-  textBase tb("file",'h');
+  textBase tb("../data/fgtest1.txt",'h');
   tb.parse('a');
   REQUIRE(tb.getThreshold() == 0);
   tb.parse('h');
@@ -33,7 +33,7 @@ TEST_CASE("parse", "[parse]") {
 
 
 TEST_CASE("readText", "[readText]") {
-  textBase tb("file",'h');
+  textBase tb("../data/fgtest1.txt",'h');
   std::string groupfile="../data/fgtest1.txt";
   std::vector<std::string> text;
   text=tb.readText(groupfile);
@@ -45,7 +45,7 @@ TEST_CASE("readText", "[readText]") {
 
 /*
 TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
-  textBase tb("file.txt",'h');
+  textBase tb("../data/fgtest1.txt",'h');
   tb.parse('h');
   std::vector<std::string> text;
   std::string fname= "file.txt"
@@ -78,7 +78,7 @@ TEST_CASE("buildNgram into increment", "[buildNgram],[increment]") {
 */
 
 TEST_CASE("playalg", "[playalg]") {
-  textBase tb("file",'h');
+  textBase tb("../data/fgtest1.txt",'h');
   REQUIRE(tb.playalg(1.1,50));
   REQUIRE(!(tb.playalg(0.9,50)));
   REQUIRE(tb.playalg(.03,1));

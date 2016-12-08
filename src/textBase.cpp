@@ -22,12 +22,15 @@ void textBase :: parse(char deg) {
   case 'h':
     gramCount=3;
     threshold=.03;
+    break;
   case 'm':
     gramCount=4;
     threshold=.02;
+    break;
   case 'l':
     gramCount=5;
     threshold=.005;
+    break;
   default :
     std::cerr << "Invalid sensitivity given! Please enter h, m, or l\n";
     //should we give throw and catch error to have them renter an input
