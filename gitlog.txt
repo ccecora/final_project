@@ -1,0 +1,280 @@
+commit f34db85283cf5f0234ed3c536dccb14933804ce4
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 22:50:26 2016 -0500
+
+    Added default medium feature
+
+commit 3d79487056b19920f0f390b56c4980296093f7f7
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 22:26:56 2016 -0500
+
+    cos vals adjusted
+
+commit 5b1c3fe06f8a62631b1caa5f1bb22210085365af
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 21:57:10 2016 -0500
+
+    added toString and ngram works and is fairly accurate
+
+commit 998ea0e2408b1dc4363f2e6ca9a210a5aec21a49
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 21:24:37 2016 -0500
+
+    Added cos val statements for output
+
+commit 09e5bf3d8fc8da3d8bd7276588e1e9c23fe06374
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 19:46:46 2016 -0500
+
+    having trouble reading in text files
+
+commit 61c364804da5f09dd830b66384f5c7505c940f76
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 19:22:18 2016 -0500
+
+    resolved errors and got it to complie
+
+commit 4b60ded17c2b9252e8b2e4e7419559dcd952d47d
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 18:01:03 2016 -0500
+
+    screwed it up
+
+commit a141c3deeb8d26c6d4ff82b023e8259fae233dad
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 17:54:23 2016 -0500
+
+    debugging
+
+commit bea01d911b61bc2efb1b37587c384b96337ab832
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 17:52:34 2016 -0500
+
+    cos.cpp errors round 1
+
+commit 98ac8c3e6c3c309e56e926f1d1ee4dcf3cb655a9
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 17:39:50 2016 -0500
+
+    fixing bugs
+
+commit bf542e599e535e08fcb150568f1e70730b47cfda
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 17:32:00 2016 -0500
+
+    fixed some bugs
+
+commit eacdb843c61432c0948b1532ed923c1a389215b7
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 17:08:37 2016 -0500
+
+    trying to compile and fixing errors
+
+commit 19060276543b166d18995947e45f0d1b1772e93a
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 16:50:00 2016 -0500
+
+    completed Makefile
+
+commit 1136da2dbca6815316e1ff2adcc6e0c29fa47542
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 16:40:49 2016 -0500
+
+    changed unit tests
+
+commit d4dc08e21439a8864a0b0607e688c65e0be40f0e
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 16:39:28 2016 -0500
+
+    cos string output made
+
+commit d57366c3426bd934ee9dbdfebcdb882eade35ba8
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 16:34:57 2016 -0500
+
+    added some more files
+
+commit 4599ae7b0fad709e01883295e81de6e4a2930f60
+Merge: c368b53 9a2729c
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 16:18:22 2016 -0500
+
+    Merge branch 'master' of https://github.com/chase-ben/final_project
+
+commit c368b53f47479ffc97e57f2b7ef659ece009702e
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 16:17:47 2016 -0500
+
+    added a few more unit tests
+
+commit 9a2729c3b4d7fcfa0a192b274921d39cdaf4cd62
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Wed Dec 7 16:15:23 2016 -0500
+
+    cos sus file output vector stuff made
+
+commit b98d8aae1f5ec520c98987ffb7068002b79fa3fc
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 15:43:09 2016 -0500
+
+    adding test files
+
+commit 3de152fe3b2a1f1806e7aa1c631aa3f4416bab1b
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 15:35:30 2016 -0500
+
+    made toString and started making test files
+
+commit f82218fd1cf31e3440194841c0c37b8ab758b0ab
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 13:18:20 2016 -0500
+
+    made a unit test for ngram creation
+
+commit 094182d8bdc184569d6587635d2f2a1d82fae02f
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 12:22:42 2016 -0500
+
+    Finished the Ngram comparison such that it will put sucpicous files into data type
+
+commit ab694d53f07ec68ec98c7a74c930877ca7c92bd1
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 11:28:25 2016 -0500
+
+    almost done with ngram comparison steps
+
+commit 7bc8a3b34670af5f1694130982069a6b98d8bd4c
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 08:54:19 2016 -0500
+
+    starting to make Ngram comparison
+
+commit 13f18ab6c50b4b06d7d6c334f0490b0b7caeed5f
+Merge: f5a59df 83de8de
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Wed Dec 7 02:04:26 2016 -0500
+
+    Added some tests and cleaned up some code
+
+commit f5a59dfb6191879c1f083d8f383f38e8aa403897
+Merge: 49326f6 a1afa0d
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Tue Dec 6 22:31:11 2016 -0500
+
+    removed files trying to pull
+
+commit 83de8de4e54a8955ed12ae2c45046b087c9ac3ef
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Tue Dec 6 20:19:46 2016 -0500
+
+    omg that took awhile, all cos stuff done, ready for first compile
+
+commit c0643523d006bc7303717599252ece242c8d83f2
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Tue Dec 6 19:07:45 2016 -0500
+
+    did all of cosine stuff except compare
+
+commit 41a9b1c78d9b678824060331f22a37a2c528c75a
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Mon Dec 5 20:57:03 2016 -0500
+
+    initial cosine functions, header made
+
+commit 49326f69ee32924de81c1e29b8e6b56085b77f4a
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Dec 5 17:51:23 2016 -0500
+
+    added a cosine class file
+
+commit 8cba8c235a5f0d410960477107baab5d39c500d6
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Dec 5 17:49:57 2016 -0500
+
+    worked on unitTests
+
+commit 602ddc44097a8e7d5eef524fdeb526a2cd49c056
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Dec 5 14:52:33 2016 -0500
+
+    brought over Makefile and unit tests from a8
+
+commit 7a84b72f6f37caaf73c2ecca1dfda709b473c684
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Dec 5 03:55:49 2016 -0500
+
+    The main function and ngram class were added
+
+commit 98bef0b598a98e372161c792fdeacec20556e980
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Dec 5 01:45:49 2016 -0500
+
+    removed extra file
+
+commit a1afa0d4e1bfd1ea2e0bb33e8f328a9564a662d9
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Fri Dec 2 17:26:59 2016 -0500
+
+    cosine class
+
+commit 71f73fe0097ebf36733d1d3fb656e7b30433b85c
+Merge: 00c659f a315f84
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Fri Dec 2 17:19:26 2016 -0500
+
+    cosine class, map init funct
+
+commit 00c659f5a87a2378ab78dbd4743cf4b99c66dd21
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Fri Dec 2 17:08:42 2016 -0500
+
+    cosine class, initMap funct created
+
+commit a315f849fb3268a98875bb4bdba88713f9331cab
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Tue Nov 29 21:50:28 2016 -0500
+
+    cleaned up directory organization
+
+commit fd744defe7a28023626007ed946c9cebd5ab6781
+Merge: c8e4524 52143ca
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Tue Nov 29 21:47:03 2016 -0500
+
+    Merge branch 'master' of https://github.com/chase-ben/final_project
+
+commit c8e45240a68d6067a55ca946b274c61cf6fcf9df
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Tue Nov 29 21:41:42 2016 -0500
+
+    added my file with a class from my personal computer to the repo
+
+commit 52143caab9bd4600e0d6ca3182b695c9a40a8057
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Tue Nov 29 21:23:48 2016 -0500
+
+    first cos file upload
+
+commit f63a56abbfa7a7e0773d604a9c19a3ae3d2a4f0a
+Author: ccecora1 <ccecora1@jhu.edu>
+Date:   Mon Nov 28 14:38:49 2016 -0500
+
+    first cos funct commit
+
+commit f526165544c96d9ae8480c81872bd81a7ff264b4
+Author: Ben Ramsay <bramsay3@jhu.com>
+Date:   Mon Nov 28 14:19:11 2016 -0500
+
+    test to see if git is set up
+
+commit 9976fac535ae64216d2501a305babc93eca2d805
+Author: chase-ben <cjc0885@gmail.com>
+Date:   Sat Nov 19 09:56:29 2016 -0500
+
+    Add files via upload
+
+commit 8cbf2d3cace525561428571fb9bddd7af879106e
+Author: chase-ben <cjc0885@gmail.com>
+Date:   Sat Nov 19 09:38:50 2016 -0500
+
+    Initial commit
