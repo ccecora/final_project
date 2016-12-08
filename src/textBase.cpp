@@ -19,6 +19,7 @@ textBase :: textBase(std::string groupFile, char deg) {
   }
   compCosine();
   compNgram();
+  toString();
 }
 
 void textBase :: parse(char deg) {
@@ -107,7 +108,6 @@ void textBase :: combineNgram(Ngram primary, Ngram secondary) {
 bool textBase :: playalg(int value, int total) {
   float ngramthresh= threshold * (float) total;
   bool suspicous= ((float)value)>ngramthresh;
-  
   return suspicous;
 }
 

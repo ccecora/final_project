@@ -1,0 +1,2 @@
+../bin/tests/test1.txt
+../bin/tests/test2.txt
